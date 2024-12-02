@@ -1,6 +1,6 @@
 public interface Accessory {
     String getName();
-    void applyEffect(RPGCharacter character);
+    int increaseDamage(RPGCharacter character);
     String getSpecialSkill(); // สกิลพิเศษจากอุปกรณ์
     int getManaCost(); // ค่ามานาที่ต้องใช้ในการร่ายสกิล
 }
@@ -12,10 +12,10 @@ class SwordAccessory implements Accessory {
     }
 
     @Override
-    public void applyEffect(RPGCharacter character) {
-        System.out.println("Flame Sword equipped! Base damage increased.");
+    public int increaseDamage(RPGCharacter character) {
         // เพิ่มดาเมจให้ตัวละคร
-
+        int damage = 10;
+        return damage;
     }
 
     @Override
@@ -36,8 +36,10 @@ class StaffAccessory implements Accessory {
     }
 
     @Override
-    public void applyEffect(RPGCharacter character) {
-        System.out.println("Arcane Staff equipped! Magic attack increased.");
+    public int increaseDamage(RPGCharacter character) {
+        // เพิ่มดาเมจให้ตัวละคร
+        int damage = 15;
+        return damage;
     }
 
     @Override
