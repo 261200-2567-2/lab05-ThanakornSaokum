@@ -2,6 +2,7 @@ import java.text.DecimalFormat;
 
 public class RPGCharacter {
     private String name;
+    private double baseDamage;
     private int maxHP;
     private int maxMana;
     private int level;
@@ -39,6 +40,7 @@ public class RPGCharacter {
         this.maxHP = job.getMaxHP(level);
         this.currentHP = maxHP;
         this.maxMana = job.getMaxMana(level);
+        this.baseDamage = job.getBaseDamage(level);
         this.currentMana = maxMana;
         this.baseRunSpeed = 10.0;
         calculateRunSpeed();
@@ -47,6 +49,8 @@ public class RPGCharacter {
     public void equipAccessory(Accessory accessory) {
         this.accessory = accessory;
         System.out.println(accessory.getName() + "!");
+        double increaseDamage = accessory.increaseDamage(this);
+        this.baseDamage = job.getBaseDamage(level) + increaseDamage;
     }
 
 
@@ -100,7 +104,7 @@ public class RPGCharacter {
         System.out.println("=========================================");
         System.out.println("Name: " + name);
         System.out.println("Level: " + level);
-        System.out.println("Damage: " + job.getBaseDamage(level));
+        System.out.println("Damage: " + baseDamage);
         //System.out.println("Job: " + job);
         System.out.println("HP: " + currentHP + "/" + maxHP);
         System.out.println("Mana: " + currentMana + "/" + maxMana);
